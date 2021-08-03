@@ -7,8 +7,16 @@ const key = process.env.KEY;
 const secret = process.env.SECRET;
 const cluster = process.env.CLUSTER;
 
+// getting pusher starteddddd
+var pusher = new Pusher({
+  appId: app_id,
+  key: key,
+  secret: secret,
+  cluster: cluster,
+  encrypted: true
+});
 
-
+// starting up express
 const app = express();
 
 app.use(bodyParser.json());
@@ -22,6 +30,8 @@ app.use(function(req,res,next) {
   error404.status = 404;
   next(error404);
 })
+
+// API begin funnnn
 
 module.exports = app;
 
