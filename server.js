@@ -18,13 +18,11 @@ var pusher = new Pusher({
 
 // starting up express
 const app = express();
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Error handler for 404 pages
-
 app.use(function(req,res,next) {
   var error404 = new Error("Route Not Found");
   error404.status = 404;
@@ -32,6 +30,16 @@ app.use(function(req,res,next) {
 })
 
 // API begin funnnn
+app.post('/comment', function(req,res) {
+  console.log(req.body);
+  var newComment = {
+    name: req.body.name,
+    email: req.body.email,
+    comment: req.body.comment
+  }
+  pusher.trigger('flash-comment', 'new_comment', newComment),
+  res.jason({ created: true })
+})
 
 module.exports = app;
 
