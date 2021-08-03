@@ -1,6 +1,13 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const Pusher =require('pusher');
+const app_id = process.env.APP_ID;
+const key = process.env.KEY;
+const secret = process.env.SECRET;
+const cluster = process.env.CLUSTER;
+
+
 
 const app = express();
 
