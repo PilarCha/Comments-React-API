@@ -13,7 +13,7 @@ var pusher = new Pusher({
   key: key,
   secret: secret,
   cluster: cluster,
-  encrypted: true
+  forceTLS: true
 });
 
 // starting up express
