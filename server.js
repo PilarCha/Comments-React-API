@@ -23,11 +23,11 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Error handler for 404 pages
-app.use(function(req,res,next) {
-  var error404 = new Error("Route Not Found");
-  error404.status = 404;
-  next(error404);
-})
+// app.use(function(req,res,next) {
+//   var error404 = new Error("Route Not Found");
+//   error404.status = 404;
+//   next(error404);
+// })
 
 // API begin funnnn
 app.post('/comment', function(req,res) {
@@ -38,7 +38,7 @@ app.post('/comment', function(req,res) {
     comment: req.body.comment
   }
   pusher.trigger('flash-comment', 'new_comment', newComment),
-  res.jason({ created: true })
+  res.json({ created: true })
 })
 
 module.exports = app;
