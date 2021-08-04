@@ -6,13 +6,14 @@ const app_id = process.env.APP_ID;
 const key = process.env.KEY;
 const secret = process.env.SECRET;
 const cluster = process.env.CLUSTER;
+require('dotenv').config();
 
 // getting pusher starteddddd
 var pusher = new Pusher({
-  appId: app_id,
-  key: key,
-  secret: secret,
-  cluster: cluster,
+  appId: process.env.APP_ID,
+  key: process.env.KEY,
+  secret: process.env.SECRET,
+  cluster: process.env.CLUSTER,
   forceTLS: true
 });
 
